@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Scope of the variables</title>
+    </head>
+    <body>
+        <h2>A function can access variables defined inside the function</h2>
+        <button onclick="a()">Click Me</button>
+        <h3 id="black"></h3>
+        <h3 id="white"></h3>
+        <script >
+                  var happy=7
+                  function a(){
+                          var sad =7
+                          document.getElementById("black").innerHTML = happy * sad
+                  }
+                  document.getElementById("black").innerHTML = happy
+        </script>
+    </body>
+</html>
