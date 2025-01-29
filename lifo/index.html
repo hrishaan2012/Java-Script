@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Call Stack</title>
+    </head>
+    <body>
+        <h1>Call Stack</h1>
+        <h2 id="a"></h2>
+        <script>
+            
+            function add(a,b){
+                return a+b
+            }
+            function average(a,b){
+                return add(a,b)/2
+            }
+            var result =average(234,456)
+            document.getElementById("a").innerHTML="the average of the 2 no. 234 and 456="+result
+        </script>
+    </body>
+</html>
