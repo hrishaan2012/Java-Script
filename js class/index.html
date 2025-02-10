@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>JS class</title>
+    </head>
+    <body>
+        <h1>Javascript class</h1>
+        <h2 id="a">
+            
+        </h2>
+        <h2 id="b">
+
+        </h2>
+        <script>
+            class student{
+                constructor (name,year){
+                    this.name=name
+                    this.year=year
+                }
+                age(){
+                    let date =new Date()
+                    return date.getFullYear()-this.year
+            }
+        }
+        s1=new student("Mukesh Ambani"
+            ,1998
+            
+        )
+        document.getElementById("a").innerHTML="My name is "+s1.name +". I was born in "+s1.year
+
+        s2 = new student("Vijay Mallya"
+                , 1988
+
+            )
+            document.getElementById("b").innerHTML = "My name is " + s2.name + ". I was born in " + s2.year
+       
+        </script>
+    </body>
+</html>
