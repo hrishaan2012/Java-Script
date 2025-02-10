@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title> Static Method</title>
+    </head>
+    <body>
+        <h1>Static Method</h1>
+        <h2 id="a"></h2>
+        <h2 id="b"></h2>
+        <script>
+            class student{
+                constructor(name)
+                {
+                    this.name=name
+                }
+                Hi(){
+                    return "Hi"+this.name
+                }
+                static hello(){
+                    return "hello"
+                }
+            }
+            s1=new student("Vijay Mallya")
+            document.getElementById("a").innerHTML=s1.Hi()
+            
+                document.getElementById("b").innerHTML = student.hello()
+        </script>
+    </body>
+</html>
