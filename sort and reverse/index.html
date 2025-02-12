@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>JS Array sorting</title>
+    </head>
+    <body>
+        <h1>
+            JS Array sorting
+           </h1>
+           <button onclick="ascending()">ascending</button>
+            <button onclick="decending()">decending</button>
+           <h2 id="a"></h2>
+            <h2 id="b"></h2>
+            <script>
+            var n=[34,56,3,35,23,6,354,64,43,46]
+            document.getElementById("a").innerHTML=n
+            function ascending(){
+                n.sort(function(a,b){return a-b})
+                document.getElementById("a").innerHTML=n
+            }
+            function decending() {
+                    n.sort(function (a, b) { return b - a })
+                    document.getElementById("a").innerHTML = n
+                }
+        </script>
+    </body>
+</html>
