@@ -1,0 +1,13 @@
+<html>
+    <body>
+        <p id="a"></p>
+        <p id="b"></p>
+        <script>
+            var a = {name: "John", age: 30, city: "New York"};
+            var b = JSON.stringify(a);
+            var c = JSON.parse(b);
+            document.getElementById("a").innerHTML = c.name
+            document.getElementById("b").innerHTML = c.age
+        </script>
+    </body>
+</html>
