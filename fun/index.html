@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Clone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header input {
+            width: 50%;
+            padding: 5px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .video-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .video-card img {
+            width: 100%;
+            display: block;
+        }
+        .video-info {
+            padding: 10px;
+        }
+        .video-info h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .video-info p {
+            margin: 5px 0 0;
+            color: #555;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>YouTube Clone</h1>
+        <input type="text" placeholder="Search">
+    </header>
+    <main>
+        <div class="video-grid">
+            <div class="video-card">
+                <img src="https://i.ytimg.com/vi/<VIDEO_ID>/hqdefault.jpg" alt="MrBeast Latest Video Thumbnail">
+                <div class="video-info">
+                    <h3>MrBeast Latest Video</h3>
+                    <p>MrBeast</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
