@@ -1,18 +1,20 @@
 <html>
-    <body>
-        <h2> javascript async / await</h2>
-        <h1 id="result"></h1>
-        <script>
-            async function add(x, y) {
-                response=await x+y
-                display(response)
-            }
-            function display(ast) {
-                document.getElementById("result").innerHTML = ast;
-            }
-        
-            add(5, 10)
-        </script>
-            
-    </body>
+
+<body>
+    <h2> javascript async / await</h2>
+    <h1 id="result"></h1>
+    <script>
+        async function add(x, y) {
+            response = await x + y
+            display(response)
+        }
+        function display(ast) {
+            document.getElementById("result").innerHTML = ast;
+        }
+
+        add(5, 10)
+    </script>
+
+</body>
+
 </html>
