@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ping Pong Game</title>
+    <style>
+        canvas {
+            display: block;
+            margin: 0 auto;
+            background: black;
+        }
+        #score {
+            text-align: center;
+            color: white;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="score">
+        Player: 0 | AI: 0
+    </div>
+    <script>
+        // Increase player score with each paddle touch
+        function checkPaddleTouch() {
+            if (ballX <= paddleWidth && ballY >= playerY && ballY <= playerY + paddleHeight) {
+                playerScore++;
+                updateScore();
+            }
+        }
+
+        // Smooth player paddle movement
+        
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') playerDirection = -1;
+            if (e.key === 'ArrowDown') playerDirection = 1;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') playerDirection = 0;
+        });
+
+        const originalUpdate = update;
+        update = function () {
+            originalUpdate();
+
+            // Smooth player movement
+            playerY += playerDirection * playerSpeed * 0.1;
+            if (playerY < 0) playerY = 0;
+            if (playerY > canvas.height - paddleHeight) playerY = canvas.height - paddleHeight;
+
+            // Check for paddle touch
+            checkPaddleTouch();
+        };
+    </script>
+    <script>
+        let playerScore = 0;
+        let aiScore = 0;
+
+        function updateScore() {
+            const scoreElement = document.getElementById('score');
+            scoreElement.textContent = `Player: ${playerScore} | AI: ${aiScore}`;
+        }
+
+        function adjustSpeed() {
+            const speedIncrease = Math.floor((playerScore + aiScore) / 5);
+            ballSpeedX = 5 + speedIncrease * 2;
+            ballSpeedY = 5 + speedIncrease * 2;
+        }
+
+        function checkPoint() {
+            if (ballX <= 0) {
+                aiScore++;
+                resetBall();
+            }
+            if (ballX >= canvas.width) {
+                playerScore++;
+                resetBall();
+            }
+            updateScore();
+            adjustSpeed();
+        }
+    </script>
+<canvas id="gameCanvas" width="800" height="400"></canvas>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const paddleWidth = 10, paddleHeight = 100, ballSize = 10;
+        const playerSpeed = 50; // High speed for player movement
+        let playerY = canvas.height / 2 - paddleHeight / 2;
+        let aiY = canvas.height / 2 - paddleHeight / 2;
+        let ballX = canvas.width / 2, ballY = canvas.height / 2;
+        let ballSpeedX = 5, ballSpeedY = 5;
+
+        function drawRect(x, y, width, height, color) {
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, width, height);
+        }
+
+        function drawCircle(x, y, radius, color) {
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+        const playerSpeed = 5; // Adjusted speed for smoother movement
+        }
+
+        function update() {
+            // Ball movement
+            ballX += ballSpeedX;
+            ballY += ballSpeedY;
+
+            // Ball collision with top and bottom walls
+            if (ballY <= 0 || ballY >= canvas.height) ballSpeedY *= -1;
+
+            // Ball collision with paddles
+            if (ballX <= paddleWidth && ballY >= playerY && ballY <= playerY + paddleHeight) ballSpeedX *= -1;
+            if (ballX >= canvas.width - paddleWidth && ballY >= aiY && ballY <= aiY + paddleHeight) ballSpeedX *= -1;
+
+            // Ball reset if it goes out of bounds
+            if (ballX <= 0 || ballX >= canvas.width) {
+                ballX = canvas.width / 2;
+                ballY = canvas.height / 2;
+                ballSpeedX *= -1;
+            }
+
+            // AI paddle movement
+            if (aiY + paddleHeight / 2 < ballY) aiY += 5;
+            else if (aiY + paddleHeight / 2 > ballY) aiY -= 5;
+        }
+
+        function draw() {
+            // Clear canvas
+            drawRect(0, 0, canvas.width, canvas.height, 'black');
+
+            // Draw paddles and ball
+            drawRect(0, playerY, paddleWidth, paddleHeight, 'white');
+            drawRect(canvas.width - paddleWidth, aiY, paddleWidth, paddleHeight, 'white');
+            drawCircle(ballX, ballY, ballSize, 'white');
+        }
+
+        function gameLoop() {
+            update();
+            draw();
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Player paddle movement
+        let playerDirection = 0;
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowUp') playerDirection = -1;
+            if (e.key === 'ArrowDown') playerDirection = 1;
+        });
+
+        window.addEventListener('keyup', (e) => {
+            if (e.key === 'ArrowUp' || e.key === 'ArrowDown') playerDirection = 0;
+        });
+
+        function smoothPlayerMovement() {
+            playerY += playerDirection * playerSpeed * 0.1;
+            if (playerY < 0) playerY = 0;
+        update = function () {
+            originalUpdate();
+            smoothPlayerMovement();
+
+            // Adjust AI movement to make it a little weaker
+            if (aiY + paddleHeight / 2 < ballY - 20) aiY += 3;
+            else if (aiY + paddleHeight / 2 > ballY + 20) aiY -= 3;
+        };
+            if (aiY + paddleHeight / 2 < ballY - 20) aiY += 3;
+            else if (aiY + paddleHeight / 2 > ballY + 20) aiY -= 3;
+        };
+        
+
+        gameLoop();
+    </script>
+        function smoothPlayerMovement() {
+            playerY += playerDirection * playerSpeed * 0.1;
+            if (playerY < 0) playerY = 0;
+            if (playerY > canvas.height - paddleHeight) playerY = canvas.height - paddleHeight;
+        }
+
+        const originalUpdate = update;
+        update = function () {
+            originalUpdate();
+            smoothPlayerMovement();
+
+            // Adjust AI movement to make it a little weaker
+            if (aiY + paddleHeight / 2 < ballY - 20) aiY += 3;
+            else if (aiY + paddleHeight / 2 > ballY + 20) aiY -= 3;
+        };
