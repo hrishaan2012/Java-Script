@@ -1,0 +1,97 @@
+.img1,
+.img2,
+.img3 {
+    position: relative;
+    opacity: 0.8;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+.img3 {
+    background-image: url('img1.png');
+    width: 100%;
+    height: 100%;
+}
+
+section {
+    text-align: center;
+    padding: 40px 60px;
+}
+
+.section-light {
+    background-color: f4f4f4;
+    color: #000;
+    ;
+}
+
+.section-dark {
+    background-color: #333;
+    color: #fff;
+}
+
+.ptext {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    width: 100%;
+    color: blueviolet;
+    font-size: 27px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.ptext .border {
+    border: 2px solid blueviolet;
+    padding: 10px 20px;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.ptext.border.transparent {
+    background-color: transparent;
+}
+
+@media (max-width: 768px) {
+
+    .img1,
+    .img2,
+    .img3 {
+        height: 200px;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+}
+body {
+    margin: 0;
+    font-family: arial;
+}
+
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.topnav A {
+    font-size: 17px;
+    float: left;
+    padding: 16px 14px;
+    text-align: centre;
+    color: deeppink;
+    text-decoration: none;
+
+}
+
+.topnav a:hover {
+    background-color: darkviolet;
+    color: skyblue;
+}
+
+.topnav a.active {
+    background-color: yellowgreen;
+    color: cyan;
+}
