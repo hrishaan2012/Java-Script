@@ -8,7 +8,7 @@ body {
     overflow: hidden;
 }
 
-.topnav A {
+.topnav a {
     font-size: 17px;
     float: left;
     padding: 16px 14px;
